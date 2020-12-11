@@ -72,3 +72,11 @@ curl -H "Content-Type: application/json" --data '{"vendorId":108,"instrumentId":
 ### Improvements
 
 ######  The drop file is currently under resource Class path. We can change the poller File feature to point to any external folder (drop files location). Vendors can drop the file at the common location with the files should be of comma (,) separated ending with .csv 
+
+
+### How to Test
+```
+git clone https://github.com/s4sushil/trade-instrument-pricer.git
+cd trade-instrument-pricer
+./mvnw spring-boot:run
+```
