@@ -9,6 +9,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+/**
+ * Transforming the payload into the desired Request Pojo.
+ */
 public class TradePriceRequestTransformer extends AbstractPayloadTransformer<Map<String, String>, TradePriceRequest> {
     private final Class<?> targetClass;
 

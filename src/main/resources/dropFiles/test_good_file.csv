@@ -1,0 +1,5 @@
+vendorId,instrumentId,name,instrumentName,bid,ask
+1,1,MORGAN_STANLEY,MS,10.50,11.50
+1,2,J_P_MORGAN_CHASE,JPMC,92.80,92.90
+2,3,GOOGLE,GOOG,88.65,111.40
+2,4,APPLE,APP,909.50,909.90

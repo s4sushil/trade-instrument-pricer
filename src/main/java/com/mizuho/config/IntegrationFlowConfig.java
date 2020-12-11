@@ -39,7 +39,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-
 @Configuration
 @EnableJms
 public class IntegrationFlowConfig {
@@ -47,10 +46,13 @@ public class IntegrationFlowConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(IntegrationFlowConfig.class);
 
     private File filePoller() throws IOException {
-        File file = new ClassPathResource("poller").getFile();
+        File file = new ClassPathResource("dropFiles").getFile();
         return file;
     }
 
+    /**
+     * CSV Flow to send the incoming message flows via newPriceRequestChannel.
+     */
     @Bean
     public IntegrationFlow csvInputFlow() throws IOException {
         return IntegrationFlows
@@ -70,6 +72,9 @@ public class IntegrationFlowConfig {
                 .get();
     }
 
+    /**
+     * jms Flow to send the incoming message flows via newPriceRequestChannel.
+     */
     @Bean
     public IntegrationFlow jmsInputFlow(ConnectionFactory connectionFactory, MessageConverter messageConverter) {
         return IntegrationFlows.from(
@@ -82,8 +87,7 @@ public class IntegrationFlowConfig {
     }
 
     /**
-     * Service Activator to connect the incoming message flows to our TradePriceService.
-     * Invalid new prices are rejected by the validator.
+     * Service Activator to connect the incoming message flows to TradeInstrumentPriceService.
      */
     @Bean
     @ServiceActivator(inputChannel = "newPriceRequestChannel")
@@ -113,7 +117,7 @@ public class IntegrationFlowConfig {
     }
 
     /**
-     * Log the errors without the stacktrace
+     * Logging error
      */
     @Bean
     @ServiceActivator(inputChannel = "errorChannel")
