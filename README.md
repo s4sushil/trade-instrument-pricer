@@ -60,13 +60,13 @@ curl -H "Content-Type: application/json" --data '{"vendorId":108,"instrumentId":
 
 ### CSV Integration Flow
 
-
 ![Flow](uml-diagram/CsvIntegrationFlow.jpeg)
 
 
 ### Http Client Sequence Flow
 
 ![Flow](uml-diagram/httpSequence.jpeg)
+![Flow](uml-diagram/httpSequencePart2.jpeg)
 
 
 ### Improvements
