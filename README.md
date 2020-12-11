@@ -1,6 +1,5 @@
 # trade-instrument-pricer
 This project takes prices of instruments traded on venue. It captures the prices, caches and later persists price information provided by vendor.
-
 # DESCRIPTION :
 The project accepts prices of the traded instrument from vendors. The vendors can push the prices either from 
 * the REST API endpoints or 
@@ -19,14 +18,40 @@ The project is built on Java 11 using maven configuration and Spring boot start 
 The project on start up reads the default CSV file loads 4 records by default.
 http://localhost:8080/api/prices loads the prices.
 
+### High Level Desgin:
 
-### High Level FLow:
-
-![High Level Flow](./images/highlevel.png)
+![High Level Diagram](./images/highlevel.png)
 
 ## Domain Model
 The Pojo consists for 3 main classes: Vendor, Instrument and TradePrice.
 TradePriceRequest is used to post the incoming http request, to further get them cached and published in JMS Topic.
 
 ![Model](uml-diagram/classDiagram.jpeg)
+
+### InMemory Data Store
+The project uses Java in-memory maps to persist the prices coming from csv file or from rest api. 
+
+### Cache
+The solution uses Ehcache for local caching of prices. Its evicted after 30 days.
+For same key, the old data is replaced with new data.
+
+### REST End points
+* Entity Documentation - http://localhost:8080/swagger-ui/index.html#/
+* API Documentation - http://localhost:8080/swagger-ui/index.html#/TradeInstrumentPricerApi
+
+To get the prices -
+```
+* GET http://localhost:8080/api/prices
+* GET http://localhost:8080/api/instrument/{instrumentName}/prices
+* GET http://localhost:8080/api/vendor/{vendorId}/prices
+```
+To post the prices -
+```
+curl -H "Content-Type: application/json" --data '{"vendorId":108,"instrumentId":108,"vendorName":"ORM","instrumentName":"GOOG","bid":102.34,"ask":103.50, "timestamp":"2020-12-06T19:09:26"}' localhost:8080/api/price -v
+```
+
+
+![Model](uml-diagram/entityModel.jpg)
+<br/>
+![API End Points](uml-diagram/apiEndPoints.jpeg)
 
