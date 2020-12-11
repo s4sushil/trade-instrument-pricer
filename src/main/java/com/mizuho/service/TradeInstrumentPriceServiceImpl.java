@@ -38,7 +38,7 @@ public class TradeInstrumentPriceServiceImpl implements TradeInstrumentPriceServ
 
     @Override
     public void addOrUpdate(TradePrice tradePrice) {
-        LOGGER.info("Add or Update price");
+        LOGGER.info("Add or Update trade price");
         updateVendorCache(tradePrice);
         updateInstrumentCache(tradePrice);
 
@@ -83,6 +83,7 @@ public class TradeInstrumentPriceServiceImpl implements TradeInstrumentPriceServ
         } else {
             prices = new HashSet(Arrays.asList(price));
         }
+
         cache.put(price.getInstrument().getId(), prices);
     }
 
@@ -97,5 +98,6 @@ public class TradeInstrumentPriceServiceImpl implements TradeInstrumentPriceServ
             tradePrices = new HashSet(Arrays.asList(price));
         }
         cache.put(price.getVendor().getId(), tradePrices);
+
     }
 }
