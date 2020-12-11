@@ -20,7 +20,7 @@ http://localhost:8080/api/prices loads the prices.
 
 ### High Level Desgin:
 
-![High Level Diagram](./images/highlevel.png)
+![High Level Diagram](uml-diagram/HLD.jpeg)
 
 ## Domain Model
 The Pojo consists for 3 main classes: Vendor, Instrument and TradePrice.
@@ -36,8 +36,6 @@ The solution uses Ehcache for local caching of prices. Its evicted after 30 days
 For same key, the old data is replaced with new data.
 
 ### REST End points
-* Entity Documentation - http://localhost:8080/swagger-ui/index.html#/
-* API Documentation - http://localhost:8080/swagger-ui/index.html#/TradeInstrumentPricerApi
 
 To get the prices -
 ```
@@ -50,8 +48,12 @@ To post the prices -
 curl -H "Content-Type: application/json" --data '{"vendorId":108,"instrumentId":108,"vendorName":"ORM","instrumentName":"GOOG","bid":102.34,"ask":103.50, "timestamp":"2020-12-06T19:09:26"}' localhost:8080/api/price -v
 ```
 
-
+* Entity Documentation - http://localhost:8080/swagger-ui/index.html#/
 ![Model](uml-diagram/entityModel.jpg)
 <br/>
+
+* API Documentation - http://localhost:8080/swagger-ui/index.html#/TradeInstrumentPricerApi
+<br/>
+  
 ![API End Points](uml-diagram/apiEndPoints.jpeg)
 
