@@ -1,6 +1,5 @@
-package mizuho.api;
+package com.mizuho.api;
 
-import com.mizuho.api.TradeInstrumentPricerApi;
 import com.mizuho.service.TradeInstrumentPriceService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
