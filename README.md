@@ -62,3 +62,13 @@ curl -H "Content-Type: application/json" --data '{"vendorId":108,"instrumentId":
 
 
 ![Flow](uml-diagram/CsvIntegrationFlow.jpeg)
+
+
+### Http Client Sequence Flow
+
+![Flow](uml-diagram/httpSequence.jpeg)
+
+
+### Improvements
+
+######  The drop file is currently under resource Class path. We can change the poller File feature to point to any external folder (drop files location). Vendors can drop the file at the common location with the files should be of comma (,) separated ending with .csv 
