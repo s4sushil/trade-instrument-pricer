@@ -5,6 +5,7 @@ The project accepts prices of the traded instrument from vendors. The vendors ca
 * the REST API endpoints or 
 * by dropping the csv file in the drop Folder.
     
+    ? tst me
 The drop Folder keep polling for
 the files ending with *.csv. Later, it reads the file, transforms the data into equivalent Object and send the messages
 to service to be cached and publishing the data to JMS Topic.
